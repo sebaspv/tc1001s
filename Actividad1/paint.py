@@ -85,7 +85,6 @@ def pentagon(start, end):
     begin_fill()
 
     side_length = ((end.x - start.x) ** 2 + (end.y - start.y) ** 2) ** 0.5
-
     angle = 72 
     
     for _ in range(5):
@@ -130,5 +129,5 @@ onkey(lambda: store("shape", square), "s") # Keybind to draw square
 onkey(lambda: store("shape", circle), "c")
 onkey(lambda: store("shape", rectangle), "r") # Keybind to draw rectangle
 onkey(lambda: store("shape", triangle), "t") # Keybind to draw triangle
-onkey(lambda: store("shape", pentagon), "p")
+onkey(lambda: store("shape", pentagon), "p") # Keybind to draw pentagon
 done()
