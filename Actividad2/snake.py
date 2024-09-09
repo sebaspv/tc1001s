@@ -16,14 +16,9 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
-<<<<<<< HEAD
-foodColorChoices = ["green", "blue", "yellow", "purple", "orange"]
-foodColor = choice(foodColorChoices)
-
-=======
 colors = ['blue', 'yellow', 'purple', 'pink', 'orange']
 color = choice(colors)
->>>>>>> a7011816ff150dc4b4e7fe09a95e10cc5dfcd4d0
+foodColor = choice(colors)
 
 def change(x, y):
     """Change snake direction."""
@@ -40,7 +35,6 @@ def move():
     """Move snake forward one segment."""
     head = snake[-1].copy()
     head.move(aim)
-    foodColor = choice(foodColorChoices)
 
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
