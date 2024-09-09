@@ -46,6 +46,7 @@ def move():
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
+        foodColor = choice(foodColorChoices)
     else:
         snake.pop(0)
 
@@ -54,7 +55,7 @@ def move():
     for body in snake:
         square(body.x, body.y, 9, 'black')
 
-    square(food.x, food.y, 9, choice(foodColorChoices))
+    square(food.x, food.y, 9, foodColor)
     update()
     ontimer(move, 100)
 
