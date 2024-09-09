@@ -18,7 +18,7 @@ snake = [vector(10, 0)]
 aim = vector(0, -10)
 colors = ['blue', 'yellow', 'purple', 'pink', 'orange']
 color = choice(colors)
-foodColor = choice(colors)
+food_color = choice(colors)
 
 def change(x, y):
     """Change snake direction."""
