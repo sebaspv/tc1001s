@@ -10,6 +10,7 @@ Exercises
 """
 
 from turtle import *
+import math
 
 from freegames import vector
 
@@ -38,7 +39,14 @@ def square(start, end):
 
 def circle(start, end):
     """Draw circle from start to end."""
-    pass  # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+    for count in range(30):
+        forward(3.1416* ((math.sqrt((end.x - start.x) ** 2 + (end.y - start.y) ** 2))) / 30)
+        right(12)
+    end_fill()
 
 
 def rectangle(start, end):
@@ -109,17 +117,17 @@ state = {"start": None, "shape": line}
 setup(420, 420, 370, 0)
 onscreenclick(tap)
 listen()
-onkey(undo, 'u')
-onkey(lambda: color('black'), 'K')
-onkey(lambda: color('white'), 'W')
-onkey(lambda: color('green'), 'G')
-onkey(lambda: color('blue'), 'B')
-onkey(lambda: color('red'), 'R')
+onkey(undo, "u")
+onkey(lambda: color("black"), "K")
+onkey(lambda: color("white"), "W")
+onkey(lambda: color("green"), "G")
+onkey(lambda: color("blue"), "B")
+onkey(lambda: color("red"), "R")
+onkey(lambda: color('yellow'), 'Y')
 onkey(lambda: color("#D206FF"), 'P')
-onkey(lambda: store('shape', line), 'l')
-onkey(lambda: store('shape', square), 's')
-onkey(lambda: store('shape', circle), 'c')
-onkey(lambda: store('shape', rectangle), 'r')
-onkey(lambda: store('shape', triangle), 't')
-onkey(lambda: store('shape', pentagon), 'p')
+onkey(lambda: store("shape", line), "l")
+onkey(lambda: store("shape", square), "s") # Keybind to draw square
+onkey(lambda: store("shape", circle), "c")
+onkey(lambda: store("shape", rectangle), "r") # Keybind to draw rectangle
+onkey(lambda: store("shape", triangle), "t") # Keybind to draw triangle
 done()
