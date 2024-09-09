@@ -50,7 +50,9 @@ def triangle(start, end):
     """Draw triangle from start to end."""
     pass  # TODO
 
-
+def ovalo(start, end):
+    pass
+    
 def tap(x, y):
     """Store starting point or draw shape."""
     start = state['start']
