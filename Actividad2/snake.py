@@ -35,6 +35,7 @@ def move():
     """Move snake forward one segment."""
     head = snake[-1].copy()
     head.move(aim)
+    foodColor = choice(foodColorChoices)
 
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
