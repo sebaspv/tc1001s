@@ -130,5 +130,5 @@ onkey(lambda: store("shape", square), "s") # Keybind to draw square
 onkey(lambda: store("shape", circle), "c")
 onkey(lambda: store("shape", rectangle), "r") # Keybind to draw rectangle
 onkey(lambda: store("shape", triangle), "t") # Keybind to draw triangle
-onkey(lambda: store("shape", pentagon), "t")
+onkey(lambda: store("shape", pentagon), "p")
 done()
