@@ -77,8 +77,22 @@ def triangle(start, end):
     end_fill()
 
 
-def ovalo(start, end):
-    pass
+def pentagon(start, end):
+    """Draw pentagon from start to end."""
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    side_length = ((end.x - start.x) ** 2 + (end.y - start.y) ** 2) ** 0.5
+
+    angle = 72 
+    
+    for _ in range(5):
+        forward(side_length)
+        left(angle)
+    
+    end_fill()
 
 
 def tap(x, y):
@@ -110,9 +124,11 @@ onkey(lambda: color("green"), "G")
 onkey(lambda: color("blue"), "B")
 onkey(lambda: color("red"), "R")
 onkey(lambda: color('yellow'), 'Y')
+onkey(lambda: color("#D206FF"), 'P')
 onkey(lambda: store("shape", line), "l")
 onkey(lambda: store("shape", square), "s") # Keybind to draw square
 onkey(lambda: store("shape", circle), "c")
 onkey(lambda: store("shape", rectangle), "r") # Keybind to draw rectangle
 onkey(lambda: store("shape", triangle), "t") # Keybind to draw triangle
+onkey(lambda: store("shape", pentagon), "t")
 done()
