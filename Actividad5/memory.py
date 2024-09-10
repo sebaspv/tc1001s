@@ -15,7 +15,10 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
-tiles = list(range(32)) * 2
+tiles = [[0,"🐏"],[1,"🤖"],[2,"🐳"],[3,"🥞"],[4,"🦭"],[5,"💖"],[6,"🪷"],[7,"🪐"],
+         [8,"🫧"],[9,"🌝"],[10,"☃️"],[11,"🌞"],[12,"🌟"],[13,"🌮"],[14,"🧁"],[15,"🍨"],
+         [16,"🦩"],[17,"🍭"],[18,"💐"],[19,"🌱"],[20,"🎄"],[21,"🎃"],[22,"🎨"],[23,"🏆"],
+         [24,"🐧"],[25,"🎮"],[26,"🧬"],[27,"💸"],[28,"👩‍💻"],[29,"👨‍💻"],[30,"👨‍🎓"],[31,"👩‍🎓"]] * 2
 state = {'mark': None}
 hide = [True] * 64
 game_won = False
@@ -75,12 +78,9 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        if tiles[mark] < 10:
-            goto(x + 15, y + 2)
-        else:
-            goto(x + 4, y + 2)
-        color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        goto(x + 4, y + 4)
+        color('#4086ff')
+        write(tiles[mark][1], font=('Arial', 30, 'normal'))
 
     if game_won:
         up()
