@@ -74,7 +74,7 @@ def move():
         if not inside(target):
             return
 
-    ontimer(move, 50)
+    ontimer(move, 10)
 
 
 setup(420, 420, 370, 0)
