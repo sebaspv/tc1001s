@@ -84,7 +84,7 @@ def draw():
 
     if game_won:
         up()
-        goto(-120, 0)  # Posicionar el mensaje en el centro de la pantalla
+        goto(-120, 0)  
         color('green')
         write("¡Felicidades! Juego completado.", font=('Arial', 20, 'bold'))
 
