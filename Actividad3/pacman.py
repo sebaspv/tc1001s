@@ -118,8 +118,8 @@ def manhattan_distance(player, ghost, options):
     else:
         return choice(options)
 
-def move():
-    """Move pacman and all ghosts."""
+def movePacman():
+    """Move pacman."""
     writer.undo()
     writer.write(state['score'])
 
@@ -141,6 +141,17 @@ def move():
     goto(pacman.x + 10, pacman.y + 10)
     dot(20, 'yellow')
 
+    update()
+
+    for point, course in ghosts:
+        if abs(pacman - point) < 20:
+            return
+
+    ontimer(movePacman, 100)
+
+
+def moveGhosts():
+    """Move all ghosts."""
     for point, course in ghosts:
         if valid(point + course):
             point.move(course)
@@ -164,7 +175,7 @@ def move():
         if abs(pacman - point) < 20:
             return
 
-    ontimer(move, 100)
+    ontimer(moveGhosts, 10)
 
 
 def change(x, y):
@@ -186,5 +197,6 @@ onkey(lambda: change(-5, 0), 'Left')
 onkey(lambda: change(0, 5), 'Up')
 onkey(lambda: change(0, -5), 'Down')
 world()
-move()
+movePacman()
+moveGhosts()
 done()
