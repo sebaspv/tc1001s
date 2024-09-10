@@ -18,6 +18,7 @@ car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
+game_won = False
 
 
 def square(x, y):
@@ -54,7 +55,8 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
-
+        if all(not hidden for hidden in hide):
+            game_won = True
 
 def draw():
     """Draw image and tiles."""
@@ -79,6 +81,13 @@ def draw():
             goto(x + 4, y + 2)
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
+
+    if game_won:
+        up()
+        goto(-120, 0)  # Posicionar el mensaje en el centro de la pantalla
+        color('green')
+        write("¡Felicidades! Juego completado.", font=('Arial', 20, 'bold'))
+
     update()
     ontimer(draw, 100)
 
