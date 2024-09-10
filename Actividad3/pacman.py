@@ -106,6 +106,17 @@ def world():
                 path.goto(x + 10, y + 10)
                 path.dot(2, 'white')
 
+def manhattan_distance(player, ghost, options):
+    # Returns the course with the shortest manhattan distance to the player coordinates
+    # Therefore making the ghost "chase" the player
+    best_course = vector(0, 0)
+    for option in options:
+        if abs(player.x-option.x) + abs(player.y-option.y) < abs(player.x-best_course.x) + abs(player.y-best_course.y) and valid(player+option):
+            best_course = option
+    if best_course != vector(0, 0):
+        return best_course
+    else:
+        return choice(options)
 
 def move():
     """Move pacman and all ghosts."""
@@ -140,10 +151,9 @@ def move():
                 vector(0, 5),
                 vector(0, -5),
             ]
-            plan = choice(options)
+            plan = manhattan_distance(pacman, point, options)
             course.x = plan.x
             course.y = plan.y
-
         up()
         goto(point.x + 10, point.y + 10)
         dot(20, 'pink')
