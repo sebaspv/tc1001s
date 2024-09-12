@@ -21,8 +21,6 @@ tiles = [[0,"🐏"],[1,"🤖"],[2,"🐳"],[3,"🥞"],[4,"🦭"],[5,"💖"],[6,"�
          [24,"🐧"],[25,"🎮"],[26,"🧬"],[27,"💸"],[28,"👩‍💻"],[29,"👨‍💻"],[30,"👨‍🎓"],[31,"👩‍🎓"]] * 2
 state = {'mark': None}
 hide = [True] * 64
-game_won = False
-
 
 def square(x, y):
     """Draw white square with black outline at (x, y)."""
@@ -82,11 +80,12 @@ def draw():
         color('#4086ff')
         write(tiles[mark][1], font=('Arial', 30, 'normal'))
 
-    if game_won:
+    # Posicionar el mensaje en el centro de la pantalla cuando todas las cartas se han volteado
+    if (True not in hide):
         up()
-        goto(-120, 0)  # Posicionar el mensaje en el centro de la pantalla
-        color('green')
-        write("¡Felicidades! Juego completado.", font=('Arial', 20, 'bold'))
+        goto(-120, 0)
+        color('white')
+        write("¡Felicidades! Juego completado.", font=('Arial', 12, 'bold'))
 
     update()
     ontimer(draw, 100)
