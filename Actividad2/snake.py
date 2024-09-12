@@ -64,7 +64,7 @@ def move():
     ontimer(move, 100)
 
 def move_food():
-    """Mueve la comida aleatoriamente dentro de los límites de la ventana."""
+    """Mueve la comida aleatoriamente dentro de los límites."""
     food.x = randrange(-15, 15) * 10
     food.y = randrange(-15, 15) * 10
     ontimer(move_food, 2000)
