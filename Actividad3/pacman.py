@@ -26,6 +26,7 @@ ghosts = [
     [vector(100, -160), vector(-5, 0)],
 ]
 # fmt: off
+# Cambio en el tablero de juego. 
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -90,8 +91,8 @@ def valid(point):
 
 def world():
     """Draw world using path."""
-    bgcolor('black')
-    path.color('purple')
+    bgcolor('black') # Fondo del laberinto en negro.
+    path.color('purple')  # Color de las paredes del laberinto.
 
     for index in range(len(tiles)):
         tile = tiles[index]
@@ -107,8 +108,11 @@ def world():
                 path.dot(2, 'white')
 
 def manhattan_distance(player, ghost, options):
-    # Returns the course with the shortest manhattan distance to the player coordinates
-    # Therefore making the ghost "chase" the player
+    """
+    Calcula la distancia de Manhattan para hacer que el fantasma "persiga" a Pacman.
+
+    Retorna: La mejor opción de movimiento que minimiza la distancia a Pacman.
+    """
     best_course = vector(0, 0)
     for option in options:
         if abs(player.x-option.x) + abs(player.y-option.y) < abs(player.x-best_course.x) + abs(player.y-best_course.y) and valid(player+option):
@@ -144,7 +148,7 @@ def movePacman():
     update()
 
     for point, course in ghosts:
-        if abs(pacman - point) < 20:
+        if abs(pacman - point) < 20: 
             return
 
     ontimer(movePacman, 100)
@@ -175,7 +179,7 @@ def moveGhosts():
         if abs(pacman - point) < 20:
             return
 
-    ontimer(moveGhosts, 10)
+    ontimer(moveGhosts, 10)  # Los fantasmas se mueven más rápido con este temporizador.
 
 
 def change(x, y):
