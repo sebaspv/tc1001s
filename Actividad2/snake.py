@@ -16,9 +16,10 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+# Lista de colores disponibles para la serpiente y la comida.
 colors = ['blue', 'yellow', 'purple', 'pink', 'orange']
-color = choice(colors)
-food_color = choice(colors)
+color = choice(colors) # Selección aleatoria del color de la serpiente.
+food_color = choice(colors) # Selección aleatoria del color de la comida.
 
 def change(x, y):
     """Change snake direction."""
@@ -45,6 +46,7 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
+        # Reubica la comida aleatoriamente dentro de los límites.
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
     else:
@@ -52,14 +54,17 @@ def move():
 
     clear()
 
+    # Dibuja la serpiente con el color seleccionado.
     for body in snake:
-        square(body.x, body.y, 9, color)
+        square(body.x, body.y, 9, color) 
 
-    square(food.x, food.y, 9, food_color)
+    # Dibuja la comida con el color seleccionado.
+    square(food.x, food.y, 9, food_color) 
     update()
     ontimer(move, 100)
 
 def move_food():
+    """Mueve la comida aleatoriamente dentro de los límites de la ventana."""
     food.x = randrange(-15, 15) * 10
     food.y = randrange(-15, 15) * 10
     ontimer(move_food, 2000)
