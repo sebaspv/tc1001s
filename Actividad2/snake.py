@@ -47,6 +47,7 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
+        # Reubica la comida aleatoriamente dentro de los límites.
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
     else:
@@ -56,7 +57,7 @@ def move():
 
     # Dibuja cada segmento del cuerpo de la serpiente con el color seleccionado aleatoriamente.
     for body in snake:
-        square(body.x, body.y, 9, color)
+        square(body.x, body.y, 9, color) 
 
     # Dibuja la comida en la pantalla con el color seleccionado aleatoriamente.
     square(food.x, food.y, 9, food_color)
