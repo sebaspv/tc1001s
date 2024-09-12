@@ -22,6 +22,7 @@ def tap(x, y):
     if not inside(ball):
         ball.x = -199
         ball.y = -199
+         # Aumenta la velocidad del proyectil para que se mueva más rápido.
         speed.x = (x + 200) / 25
         speed.y = (y + 200) / 25
 
@@ -32,25 +33,26 @@ def inside(xy):
 def draw():
     """Draw ball and targets."""
     clear()
-
+    
+    # Cambiar el color y la figura de los balones.
     for target in targets:
         goto(target.x, target.y)
-        dot(20, 'purple')
+        dot(20, 'purple') # Cambiar el color de los balones.
 
     if inside(ball):
         goto(ball.x, ball.y)
-        color('green')
-        shape('turtle')
+        color('green') # Cambiar el color del proyectil.
+        shape('turtle')  # Cambiar la figura del proyectil.
         stamp()
 
     update()
 
 def update_targets_positions():
-    """Update target positions."""
+    """Actualizar las posiciones de los objetivos."""
 
     new_targets = []
-
     for target in targets:
+        # Mueve el balón al lado derecho de la pantalla.
         target.x -= 0.5
         if inside(target):
             new_targets.append(target)
@@ -62,7 +64,7 @@ def update_targets_positions():
     return new_targets
 
 def move():
-    "Move ball and targets."
+    """Move ball and targets."""
     global targets
     if randrange(40) == 0:
         y = randrange(-150, 150)
@@ -75,7 +77,7 @@ def move():
     targets = update_targets_positions()
 
     draw()
-    ontimer(move, 10)
+    ontimer(move, 10) # Aumenta la frecuencia de actualización del juego.
 
 setup(420, 420, 370, 0)
 hideturtle()
