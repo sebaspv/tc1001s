@@ -1,4 +1,5 @@
-"""Paint, for drawing shapes.
+"""
+Paint, for drawing shapes.
 
 Exercises
 
@@ -38,19 +39,19 @@ def square(start, end):
 
 
 def circle(start, end):
-    """Draw circle from start to end."""
+    """Dibuja un círculo desde el punto start hasta el punto end."""
     up()
     goto(start.x, start.y)
     down()
     begin_fill()
     for count in range(30):
-        forward(3.1416* ((math.sqrt((end.x - start.x) ** 2 + (end.y - start.y) ** 2))) / 30)
+        forward(3.1416 * ((math.sqrt((end.x - start.x) ** 2 + (end.y - start.y) ** 2))) / 30)
         right(12)
     end_fill()
 
 
 def rectangle(start, end):
-    """Draw rectangle from start to end."""
+    """Dibuja un rectángulo desde el punto start hasta el punto end."""
     up()
     goto(start.x, start.y)
     down()
@@ -66,7 +67,7 @@ def rectangle(start, end):
 
 
 def triangle(start, end):
-    """Draw triangle from start to end."""
+    """Dibuja un triángulo equilátero desde el punto start hasta el punto end."""
     up()
     goto(start.x, start.y)
     down()
@@ -78,7 +79,7 @@ def triangle(start, end):
 
 
 def pentagon(start, end):
-    """Draw pentagon from start to end."""
+    """Dibuja un pentágono desde el punto start hasta el punto end."""
     up()
     goto(start.x, start.y)
     down()
@@ -86,11 +87,11 @@ def pentagon(start, end):
 
     side_length = ((end.x - start.x) ** 2 + (end.y - start.y) ** 2) ** 0.5
     angle = 72 
-    
+
     for _ in range(5):
         forward(side_length)
         left(angle)
-    
+
     end_fill()
 
 
@@ -125,9 +126,9 @@ onkey(lambda: color("red"), "R")
 onkey(lambda: color('yellow'), 'Y')
 onkey(lambda: color("#D206FF"), 'P')
 onkey(lambda: store("shape", line), "l")
-onkey(lambda: store("shape", square), "s") # Keybind to draw square
+onkey(lambda: store("shape", square), "s")
 onkey(lambda: store("shape", circle), "c")
-onkey(lambda: store("shape", rectangle), "r") # Keybind to draw rectangle
-onkey(lambda: store("shape", triangle), "t") # Keybind to draw triangle
-onkey(lambda: store("shape", pentagon), "p") # Keybind to draw pentagon
+onkey(lambda: store("shape", rectangle), "r")
+onkey(lambda: store("shape", triangle), "t")
+onkey(lambda: store("shape", pentagon), "p") # Añadir un nuevo color
 done()
