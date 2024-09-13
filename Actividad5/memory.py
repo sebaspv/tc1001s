@@ -19,7 +19,7 @@ tiles = [[0,"🐏"],[1,"🤖"],[2,"🐳"],[3,"🥞"],[4,"🦭"],[5,"💖"],[6,"�
          [8,"🫧"],[9,"🌝"],[10,"☃️"],[11,"🌞"],[12,"🌟"],[13,"🌮"],[14,"🧁"],[15,"🍨"],
          [16,"🦩"],[17,"🍭"],[18,"💐"],[19,"🌱"],[20,"🎄"],[21,"🎃"],[22,"🎨"],[23,"🏆"],
          [24,"🐧"],[25,"🎮"],[26,"🧬"],[27,"💸"],[28,"👩‍💻"],[29,"👨‍💻"],[30,"👨‍🎓"],[31,"👩‍🎓"]] * 2
-state = {'mark': None}
+state = {'mark': None, 'taps': 0}
 hide = [True] * 64
 
 def square(x, y):
@@ -50,14 +50,15 @@ def tap(x, y):
     spot = index(x, y)
     mark = state['mark']
 
+    state['taps'] += 1
+
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
-        if all(not hidden for hidden in hide):
-            game_won = True
+
 
 def draw():
     """Draw image and tiles."""
@@ -79,9 +80,15 @@ def draw():
         goto(x + 4, y + 4)
         color('#4086ff')
         write(tiles[mark][1], font=('Arial', 30, 'normal'))
+        
+    # Ver la cantidad de taps
+    up()
+    goto(-200, 180)
+    color('black')
+    write(f"Taps: {state['taps']}", font=('Arial', 16, 'bold'))
 
     # Posicionar el mensaje en el centro de la pantalla cuando todas las cartas se han volteado
-    if (True not in hide):
+    if all(not hidden for hidden in hide):
         up()
         goto(-120, 0)
         color('white')
